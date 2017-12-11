@@ -39,6 +39,7 @@ function setup(){
 		y += symbolSize;
 	}
 	//change this to your font if necessary
+	//textFont(myFont);
 	textFont('Courier');
 	// textSize(symbolSize);
 	textSize(symbolSize);
@@ -51,7 +52,6 @@ function setup(){
 	// symbol.setToRandomSymbol();
 }
 
-
 function draw(){
 	background(0,255);
 	//draw the credits
@@ -60,11 +60,6 @@ function draw(){
 	streams.forEach(function(stream) {
 		stream.render();
 	});
-
-	
-	
-	
-	
 }
 
 function Symbol(x, y, speed){
@@ -82,7 +77,7 @@ function Symbol(x, y, speed){
 				this.value = myLine;
 				// below was an attempt to break the string if too long
 				// if (myLine.length >= width/symbolSize) {
-				// 	// console.log(myLine.substring(round(0,width/symbolSize)));
+				// 	console.log(myLine.substring(round(0,width/symbolSize)));
 				// 	this.value = myLine.substring(round(0,width/symbolSize));
 				// }else {this.value = myLine;}
 			}else{this.value = "Cybernetics and the Pioneers of Computer Art";}
@@ -93,7 +88,6 @@ function Symbol(x, y, speed){
 		// 	0X30A0 + round(random(0, 96))
 		// );
 	}
-
 
 	this.rain = function() {
 		// original line as in the tutorial
@@ -109,7 +103,7 @@ function Symbol(x, y, speed){
 function Stream() {
 	this.symbols = [];
 	// commented since we don't want multiple lines on the same line
-	// this.totalSymbols = round(random(1,2));
+	// this.totalSymbols = round(random(1,5));
 	this.totalSymbols = 1;
 	this.speed = random(1,3);
 
@@ -121,10 +115,8 @@ function Stream() {
 			var myString = symbol.value;
 			var leng = myString.length;
 			// console.log(leng);
-			// this is not necessary actually
- 			x -= symbolSize*leng;
-			
-			
+			// this below is not actually necessary since we have only one line of text
+ 			x -= symbolSize*leng;				
 		}
 	}
 
@@ -150,6 +142,7 @@ function showCredits(){
 }
 
 function mousePressed() {
+	//this will check if the mouse is on the links and if pressed open them in a new tab
 	if (mouseY > (height - creditSize*2) && mouseX < (credits.length * creditSize)){
 		window.open('http://dreher.netzliteratur.net/4_Medienkunst_Kybernetike.html', "_blank");
 	}
