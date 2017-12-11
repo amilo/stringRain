@@ -1,9 +1,14 @@
 //declare variables
 // var symbol;
 var symbolSize = 20;
+var creditSize = 10;
 var streams = [];
 var sentences = [];
 // var myFont;
+
+var credits = 'excerpts from "Cybernetics and the Pioneers of Computer Art" by Thomas Dreher';
+var credits2 = 'code by amilo';
+
 
 function preload() {
 // uncomment below to change text
@@ -35,8 +40,12 @@ function setup(){
 	}
 	//change this to your font if necessary
 	textFont('Courier');
+<<<<<<< HEAD
+	// textSize(symbolSize);
+=======
 	textSize(symbolSize);
 	// below example from the beginning of tutorial
+>>>>>>> e47caac288d0496442e0ec7201d21888af7a5ea6
 	// symbol = new Symbol(
 	// 	0,
 	// 	height /2,
@@ -48,9 +57,15 @@ function setup(){
 
 function draw(){
 	background(0,255);
+	//draw the credits
+	showCredits();
+	//draw the streams
 	streams.forEach(function(stream) {
 		stream.render();
 	});
+
+	
+	
 	
 	
 }
@@ -120,6 +135,7 @@ function Stream() {
 
 		this.symbols.forEach(function(symbol) {
 			fill(255, 255, 255,200);
+			textSize(symbolSize);
 			text(symbol.value, symbol.x, symbol.y);
 			symbol.rain();
 			symbol.setToRandomSymbol();
@@ -128,3 +144,20 @@ function Stream() {
 	}
 }
 
+function showCredits(){
+	fill(255,0,200);
+	textSize(creditSize);
+	text(credits , 10, height-symbolSize);
+	text(credits2 , width - credits2.length*creditSize, height-symbolSize);
+	
+}
+
+function mousePressed() {
+	if (mouseY > (height - creditSize*2) && mouseX < (credits.length * creditSize)){
+		window.open('http://dreher.netzliteratur.net/4_Medienkunst_Kybernetike.html', "_blank");
+	}
+
+	if (mouseY > (height - creditSize*2) && mouseX > (width - credits2.length * creditSize)){
+		window.open('https://github.com/amilo/stringRain', "_blank");
+	}
+}
