@@ -1,6 +1,3 @@
-//load the charset
-
-
 //declare variables
 // var symbol;
 var symbolSize = 20;
@@ -9,11 +6,11 @@ var sentences = [];
 // var myFont;
 
 function preload() {
-  // poems = loadStrings('mypoetry.txt');
-  // poems = loadStrings('w3.txt');
+// uncomment below to change text
+// poems = loadStrings('mypoetry.txt');
    poems = loadStrings('cybernetics.txt');
-
-  // myFont = loadFont("Chunk.otf");
+// uncomment to change the font
+// myFont = loadFont("Chunk.otf");
 }
 
 function setup(){
@@ -30,18 +27,16 @@ function setup(){
 		sentences.push(newSentences[j]);
 		}
 	}
-	
-	// console.log(sentences);
-
-
 	for (var i = 1; i < height / symbolSize; i++) {
 		var stream = new Stream();
 		stream.generateSymbols(random(-innerWidth, 0), y);
 		streams.push(stream);
 		y += symbolSize;
 	}
+	//change this to your font if necessary
 	textFont('Courier');
 	textSize(symbolSize);
+	// below example from the beginning of tutorial
 	// symbol = new Symbol(
 	// 	0,
 	// 	height /2,
@@ -73,6 +68,7 @@ function Symbol(x, y, speed){
 			var myLine = sentences[round(random(0,sentences.length))];
 			if (myLine){
 				this.value = myLine;
+				// below was an attempt to break the string if too long
 				// if (myLine.length >= width/symbolSize) {
 				// 	// console.log(myLine.substring(round(0,width/symbolSize)));
 				// 	this.value = myLine.substring(round(0,width/symbolSize));
@@ -80,20 +76,15 @@ function Symbol(x, y, speed){
 			}else{this.value = "Cybernetics and the Pioneers of Computer Art";}
 		}
 
-
+		// example from the tutorial
 		// this.value = String.fromCharCode(
 		// 	0X30A0 + round(random(0, 96))
 		// );
-
-		// var words = poems.split(" ");
-		// console.log(poems[random(0,10)]);
-		// var lines_index = random(0,poems.length);
-		// console.log(poems[lines_index]);
-
 	}
 
 
 	this.rain = function() {
+		// original line as in the tutorial
 		// if (this.x >= width) {
 		// 	this.x =0;
 		// } else {
@@ -105,6 +96,7 @@ function Symbol(x, y, speed){
 
 function Stream() {
 	this.symbols = [];
+	// commented since we don't want multiple lines on the same line
 	// this.totalSymbols = round(random(1,2));
 	this.totalSymbols = 1;
 	this.speed = random(1,3);
@@ -117,8 +109,9 @@ function Stream() {
 			var myString = symbol.value;
 			var leng = myString.length;
 			// console.log(leng);
-			x -= symbolSize*leng;
-			glow = false;
+			// this is not necessary actually
+ 			x -= symbolSize*leng;
+			
 			
 		}
 	}
