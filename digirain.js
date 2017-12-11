@@ -40,12 +40,9 @@ function setup(){
 	}
 	//change this to your font if necessary
 	textFont('Courier');
-<<<<<<< HEAD
 	// textSize(symbolSize);
-=======
 	textSize(symbolSize);
 	// below example from the beginning of tutorial
->>>>>>> e47caac288d0496442e0ec7201d21888af7a5ea6
 	// symbol = new Symbol(
 	// 	0,
 	// 	height /2,
